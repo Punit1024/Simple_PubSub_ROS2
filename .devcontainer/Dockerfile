@@ -11,29 +11,9 @@ RUN if ! id -u $USER_UID >/dev/null 2>&1; then \
     fi
 # Add sudo support for the non-root user
 RUN apt-get update && \
-    apt-get install -y sudo \
-        ros-jazzy-ros2-control \
-        ros-jazzy-ros2-controllers \
-        ros-jazzy-xacro \
-        ros-jazzy-ros-gz-* \
-        ros-jazzy-*-ros2-control \
-        ros-jazzy-joint-state-publisher-gui \
-        ros-jazzy-tf-transformations \
-        ros-jazzy-moveit* \
-        python3-pip \
-        python3-transforms3d \
-        python3-flask \
-        libserial-dev && \
-        \
-    pip3 install --no-cache-dir pyserial --break-system-packages && \
-    pip3 install --no-cache-dir flask-ask-sdk --break-system-packages && \
-    pip3 install --no-cache-dir ask-sdk --break-system-packages && \
-    \
+    apt-get install -y sudo && \
     echo "$USERNAME ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME && \
-    chmod 0440 /etc/sudoers.d/$USERNAME && \
-    \
-    rm -rf /var/lib/apt/lists/*
-
+    chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Switch from root to user
 USER $USERNAME
@@ -56,3 +36,21 @@ RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 ################################
 ## ADD ANY CUSTOM SETUP BELOW ##
 ################################
+RUN sudo apt-get update && \
+    sudo apt-get install -y sudo \
+        ros-jazzy-ros2-control \
+        ros-jazzy-ros2-controllers \
+        ros-jazzy-xacro \
+        ros-jazzy-ros-gz-* \
+        ros-jazzy-*-ros2-control \
+        ros-jazzy-joint-state-publisher-gui \
+        ros-jazzy-tf-transformations \
+        ros-jazzy-moveit* \
+        python3-pip \
+        python3-transforms3d \
+        python3-flask \
+        libserial-dev && \
+        \
+        sudo pip3 install --no-cache-dir pyserial --break-system-packages && \
+        sudo pip3 install --no-cache-dir flask-ask-sdk --break-system-packages && \
+        sudo pip3 install --no-cache-dir ask-sdk --break-system-package
