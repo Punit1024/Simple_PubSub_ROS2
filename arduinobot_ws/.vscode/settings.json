@@ -1,0 +1,17 @@
+{
+    "files.associations": {
+        "functional": "cpp"
+    },
+    "urdf-visualizer.packages": {
+        "arduinobot" : "${workspaceFolder}/src/arduinobot_description/"
+    },
+    "python.autoComplete.extraPaths": [
+        "/arduinobot_ws/install/arduinobot_py_examples/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/arduinobot_ws/install/arduinobot_py_examples/lib/python3.12/site-packages",
+        "/opt/ros/jazzy/lib/python3.12/site-packages"
+    ],
+    "ros.distro": "jazzy"
+}
